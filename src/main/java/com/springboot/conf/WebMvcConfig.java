@@ -1,5 +1,11 @@
 package com.springboot.conf;
 
+import org.apache.catalina.Context;
+import org.apache.catalina.connector.Connector;
+import org.apache.tomcat.util.descriptor.web.SecurityCollection;
+import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartResolver;
@@ -82,5 +88,41 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
 	@Override
 	public void configurePathMatch(PathMatchConfigurer configurer){
 		configurer.setUseSuffixPatternMatch(false);
+	}
+	
+	/**
+	 * 配置ssl重定向
+	 * @return
+	 */
+	@Bean
+	public TomcatEmbeddedServletContainerFactory servletContainer(){
+		TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory() {
+			@Override
+			protected void postProcessContext(Context context) {
+				SecurityConstraint securityConstraint = new SecurityConstraint();
+				securityConstraint.setUserConstraint("CONFIDENTIAL");
+				SecurityCollection collection = new SecurityCollection();
+				collection.addPattern("/*");
+				securityConstraint.addCollection(collection);
+				context.addConstraint(securityConstraint);
+			}
+		};
+		tomcat.addAdditionalTomcatConnectors(httpConnector());
+		
+		return tomcat;
+	}
+	
+	@Value("${source.port}")
+	private Integer sourcePort;
+	
+	@Bean
+	public Connector httpConnector(){
+		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+		connector.setScheme("http");
+		connector.setPort(sourcePort);
+		connector.setSecure(false);
+		connector.setRedirectPort(8443);
+		
+		return connector;
 	}
 }
