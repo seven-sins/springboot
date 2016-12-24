@@ -23,7 +23,7 @@ import com.springboot.interceptor.HandlerInterceptor;
 /**
  * 
  * @author seven sins
- *
+ * 
  */
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter{
