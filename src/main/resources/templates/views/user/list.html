@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>用户列表</title>
+<script type="text/javascript" th:src="@{js/jquery-3.1.1.min.js}"></script>
+<style type="text/css">
+.content{padding: 30px 100px;}
+.content *{font-size: 12px; color: #555;}
+.content table{border-collapse: collapse; width: 100%;}
+.content table th, .content table td{height: 26px; line-height: 26px; padding: 0 5px; text-align: left;
+	border: 1px solid #aaa;
+}
+</style>
+</head>
+<body>
+<div class="content" th:if="${ dataList != null }">
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>用户名</th>
+			<th>密码</th>
+		</tr>
+		<tr th:each="user : ${ dataList }">
+			<td th:text="${ user.userId }"></td>
+			<td th:text="${ user.userName }"></td>
+			<td th:text="${ user.passWord }"></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>
