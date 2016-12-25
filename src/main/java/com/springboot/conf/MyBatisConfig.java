@@ -67,7 +67,6 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     }
 
     @Bean
-    @Override
     public PlatformTransactionManager annotationDrivenTransactionManager() {
         return new DataSourceTransactionManager(dataSource);
     }
