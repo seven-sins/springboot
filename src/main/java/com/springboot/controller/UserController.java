@@ -8,12 +8,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.springboot.base.BaseController;
 import com.springboot.domain.User;
 import com.springboot.exception.SevenException;
 import com.springboot.service.UserService;
 
+/**
+ * 
+ * @author seven sins
+ *
+ */
 @Controller
 public class UserController extends BaseController{
 	
@@ -36,5 +42,21 @@ public class UserController extends BaseController{
 		userService.insert(user);
 		
 		return "redirect:/user";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public Object login(){
+		return "views/user/login";
+	}
+	
+	@RequestMapping(value = "/doLogin", method = RequestMethod.POST)
+	@ResponseBody
+	public Object doLogin(User user){
+		User me = userService.doLogin(user);
+		if(me == null){
+			throw new SevenException(1, "用户名或密码错误");
+		}
+		
+		return super.resultMap(0, me);
 	}
 }

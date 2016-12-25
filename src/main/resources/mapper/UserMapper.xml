@@ -14,6 +14,18 @@
         WHERE 1=1
     </select>
     
+    <select id="get" parameterType="int" resultMap="userRM">
+        SELECT *
+        FROM user
+        WHERE id = #{id}
+    </select>
+    
+    <select id="doLogin" parameterType="com.springboot.domain.User" resultMap="userRM">
+        SELECT id, user_name
+        FROM user
+        WHERE user_name = #{userName} and pass_word = #{passWord}
+    </select>
+    
     <insert id="insert" parameterType="com.springboot.domain.User" >
 		insert into user
 			(	

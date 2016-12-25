@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>用户登录</title>
+<script type="text/javascript" th:src="@{plugin/sevensins/seven.js}"></script>
+<script type="text/javascript" th:src="@{js/jquery.min.js}"></script>
+<link th:href="@{css/base.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{css/login.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{plugin/sevensins/seven.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<script type="text/javascript">
+s(function(){
+	s.login({
+	    submit:function(user){ 
+	    	console.log(user);
+            $.post("/doLogin", user, function(res){
+            	if(res.code == 0){
+            		s.msg("登录成功");
+            	}else{
+            		s.msg("登录失败");
+            	}
+            }); 
+            //this.close();  
+        },
+	    forget:function(){ 
+	        
+        },
+	    userName:'用户名/邮箱/手机号',      
+	    passWord:'请输入密码',                    
+	    showForget:false,
+	    showRemember:false
+    });
+})
+</script>
+</body>
+</html>

@@ -51,4 +51,9 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public User doLogin(User entity) {
+		return userMapper.doLogin(entity);
+	}
 }
