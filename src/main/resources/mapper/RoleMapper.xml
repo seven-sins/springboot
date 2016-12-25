@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.mapper.RoleMapper">
+    <resultMap id="roleRM" type="com.springboot.domain.Role">
+        <id property="id" column="id" />
+        <result property="roleName" column="role_name" />
+        <result property="isDesiabled" column="is_desiabled" />
+    </resultMap>
+    
+    <select id="find" parameterType="com.springboot.domain.Role" resultMap="roleRM">
+        SELECT id, role_name, is_desiabled
+        FROM sys_role
+        WHERE 1=1
+    </select>
+    
+    <select id="get" parameterType="int" resultMap="roleRM">
+        SELECT id, role_name, is_desiabled
+        FROM sys_role
+        WHERE id = #{id}
+    </select>
+    
+    <insert id="insert" parameterType="com.springboot.domain.Role" >
+		insert into sys_role
+			(	
+				role_name,
+				is_desiabled
+			)
+		values
+			(	
+			 	#{roleName},
+			 	#{isDesiabled}
+	 	     )
+	</insert>
+	
+	<update id="update" parameterType="com.springboot.domain.Role" >
+		update sys_role
+		<set>
+			<if test="roleName != null">
+				role_name = #{roleName},
+			</if>
+			<if test="isDesiabled != null">
+				is_desiabled = #{isDesiabled}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteById" parameterType="int">
+		delete from sys_role
+		where id = #{id}
+	</delete>
+	
+	<delete id="delete" parameterType="int">
+		delete from sys_role
+		where id in
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+</mapper> 

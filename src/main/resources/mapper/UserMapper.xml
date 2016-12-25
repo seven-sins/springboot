@@ -9,25 +9,25 @@
     </resultMap>
     
     <select id="find" parameterType="com.springboot.domain.User" resultMap="userRM">
-        SELECT *
-        FROM user
+        SELECT id, user_name
+        FROM sys_user
         WHERE 1=1
     </select>
     
     <select id="get" parameterType="int" resultMap="userRM">
-        SELECT *
-        FROM user
+        SELECT id, user_name, pass_word
+        FROM sys_user
         WHERE id = #{id}
     </select>
     
     <select id="doLogin" parameterType="com.springboot.domain.User" resultMap="userRM">
         SELECT id, user_name
-        FROM user
+        FROM sys_user
         WHERE user_name = #{userName} and pass_word = #{passWord}
     </select>
     
     <insert id="insert" parameterType="com.springboot.domain.User" >
-		insert into user
+		insert into sys_user
 			(	
 				user_name,
 				pass_word
@@ -40,7 +40,7 @@
 	</insert>
 	
 	<update id="update" parameterType="com.springboot.domain.User" >
-		update user
+		update sys_user
 		<set>
 			<if test="userName != null">
 				user_name = #{userName},
@@ -53,12 +53,12 @@
 	</update>
 	
 	<delete id="deleteById" parameterType="int">
-		delete from user
+		delete from sys_user
 		where id = #{id}
 	</delete>
 	
 	<delete id="delete" parameterType="int">
-		delete from user
+		delete from sys_user
 		where id in
 		<foreach collection="array" item="id" open="(" close=")" separator=",">
 			#{id}
