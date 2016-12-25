@@ -22,7 +22,7 @@
 			<th>密码</th>
 		</tr>
 		<tr th:each="user : ${ dataList }">
-			<td th:text="${ user.userId }"></td>
+			<td th:text="${ user.id }"></td>
 			<td th:text="${ user.userName }"></td>
 			<td th:text="${ user.passWord }"></td>
 		</tr>
