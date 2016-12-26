@@ -29,10 +29,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void insert(User entity) {
 		userMapper.insert(entity);	
-		entity.setId(100);
-		userMapper.insert(entity);
-		entity.setId(101);
-		userMapper.insert(entity);
 	}
 
 	@Override
