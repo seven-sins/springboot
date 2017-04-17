@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+<div id="app"></div>
+<script th:inline="javascript">
+	var myPrivilege = [[${privileges}]]; 
+	/*<![CDATA[*/
+	function getMenu(myPrivilege){
+		if(!myPrivilege) return [];
+		var menu = [];
+        for(var i=0; i<myPrivilege.length; i++){
+            if(myPrivilege[i].type == 0){
+                menu.push(myPrivilege[i]);
+            }
+        }
+        return menu;
+	}
+    var MENUS = getMenu(myPrivilege);
+    
+    if(MENUS && MENUS.length > 0){
+        for(var i=0; i<MENUS.length; i++){
+            var children = [];
+            for(var j=0; j<myPrivilege.length; j++){
+                if(myPrivilege[j].menuCategoryId && myPrivilege[j].menuCategoryId == MENUS[i].id){
+                    children.push(myPrivilege[j]);
+                }
+            }
+            MENUS[i].children = children;
+        }
+    }
+    /*]]>*/
+</script>
+<script th:src="@{dist/main.js}"></script>
+</body>
+</html>

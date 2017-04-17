@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>请求出错了</title>
+<style type="text/css">
+p{padding:5px;}
+p*{font-size: 12px;}
+</style>
+</head>
+<body>
+<p>错误代码：<span th:text="${code}"></span></p>
+<p>错误信息：<span th:text="${message}"></span></p>
+</body>
+</html>

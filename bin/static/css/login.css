@@ -1,0 +1,2 @@
+/*修复火狐浏览器双击选中文字*/
+body{-moz-user-select:none;user-select:none;}

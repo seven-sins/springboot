@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.mapper.UserMapper">
+    <resultMap id="userRM" type="com.springboot.domain.User">
+        <id property="id" column="id" />
+        <result property="userName" column="user_name" />
+        <result property="passWord" column="pass_word" />
+        <result property="email" column="email" />
+        <result property="nickName" column="nick_name" />
+        <result property="avatar" column="avatar" />
+        <result property="phoneNumber" column="phone_number" />
+        <result property="status" column="status" />
+        <result property="roleId" column="role_id" />
+        <result property="roleName" column="role_name" />
+		<result property="birthday" column="birthday" />
+    </resultMap>
+    
+    <select id="findByName" parameterType="string" resultMap="userRM">
+        SELECT a.id, a.user_name, a.pass_word, a.email, a.nick_name, a.avatar, a.phone_number, a.status, a.role_id, a.birthday
+        FROM sys_user a
+        WHERE a.user_name = #{userName}
+    </select>
+    
+    <select id="find" parameterType="com.springboot.domain.User" resultMap="userRM">
+        SELECT a.id, a.user_name, a.email, a.nick_name, a.avatar, a.phone_number, a.status, a.role_id, a.birthday,
+        b.name as role_name
+        FROM sys_user a
+        left join sys_role b on a.role_id = b.id
+        WHERE 1=1
+        order by a.id desc
+    </select>
+    
+   	<select id="count" parameterType="com.springboot.domain.User" resultType="java.lang.Integer">
+        SELECT count(1) 
+        FROM sys_user
+    </select>
+    
+    <select id="get" parameterType="int" resultMap="userRM">
+        SELECT a.id, a.user_name, a.email, a.nick_name, a.avatar, a.phone_number, a.status, a.role_id, a.birthday,
+        b.id as roleId, b.name as roleName
+        FROM sys_user a
+        left join sys_role b on a.role_id = b.id
+        WHERE a.id = #{id}
+    </select>
+    
+    <select id="doLogin" parameterType="com.springboot.domain.User" resultMap="userRM">
+        SELECT id, user_name, status, role_id, email, nick_name, phone_number, birthday
+        FROM sys_user
+        WHERE user_name = #{userName} and pass_word = #{passWord}
+    </select>
+    
+    <insert id="insert" parameterType="com.springboot.domain.User" >
+		insert into sys_user
+			(	
+				user_name,
+				pass_word,
+				email,
+				nick_name,
+				avatar,
+				phone_number,
+				status,
+				role_id,
+				birthday
+			)
+		values
+			(	
+			 	#{userName},
+			 	#{passWord},
+			 	#{email},
+			 	#{nickName},
+			 	#{avatar},
+			 	#{phoneNumber},
+			 	#{status},
+			 	#{roleId},
+			 	#{birthday}
+	 	     )
+	</insert>
+	
+	<update id="update" parameterType="com.springboot.domain.User" >
+		update sys_user
+		<set>
+			<if test="userName != null">
+				user_name = #{userName},
+			</if>
+			<if test="passWord != null">
+				pass_word = #{passWord},
+			</if>
+			<if test="email != null">
+				email = #{email},
+			</if>
+			<if test="nickName != null">
+				nick_name = #{nickName},
+			</if>
+			<if test="phoneNumber != null">
+				phone_number = #{phoneNumber},
+			</if>
+			<if test="avatar != null">
+				avatar = #{avatar},
+			</if>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			<if test="roleId != null">
+				role_id = #{roleId},
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteById" parameterType="int">
+		delete from sys_user
+		where id = #{id}
+	</delete>
+	
+	<delete id="delete" parameterType="int">
+		delete from sys_user
+		where id in
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+</mapper> 
