@@ -1,5 +1,9 @@
 package com.springboot.service;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:02:04
+ */
 public interface RedisService {
 	
 	public void add(String id, Object obj);

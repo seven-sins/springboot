@@ -7,6 +7,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:00:55
+ */
 public class User extends Base implements Serializable{
 
 	private static final long serialVersionUID = 1L;

@@ -18,6 +18,10 @@ import com.springboot.config.exception.SevenException;
 import com.springboot.domain.User;
 import com.springboot.service.RedisService;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午10:57:29
+ */
 public final class SessionMethodArgumentResolver implements HandlerMethodArgumentResolver {
 
 	@Override

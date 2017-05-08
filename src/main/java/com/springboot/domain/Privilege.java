@@ -7,7 +7,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by seven sins on 2/1/2017.
+ * @author seven sins
+ * @date 2017年5月8日 下午11:00:31
  */
 public class Privilege extends Base implements Serializable {
 

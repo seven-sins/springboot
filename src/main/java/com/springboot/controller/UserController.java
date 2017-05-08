@@ -27,9 +27,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 
  * @author seven sins
- *
+ * @date 2017年5月8日 下午11:00:11
  */
 @Controller
 public class UserController extends BaseController{

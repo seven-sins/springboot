@@ -5,6 +5,10 @@ import com.springboot.domain.Privilege;
 
 import java.util.List;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:01:14
+ */
 public interface PrivilegeMapper extends BaseMapper<Privilege>{ //
 
     public List<Privilege> list(Privilege privilege);

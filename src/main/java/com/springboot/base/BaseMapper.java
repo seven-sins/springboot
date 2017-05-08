@@ -3,6 +3,10 @@ package com.springboot.base;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:03:07
+ */
 public interface BaseMapper<T> {
 	
 	/**

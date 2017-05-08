@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午10:57:57
+ */
 @ControllerAdvice
 public class ExceptionHandlerAdvice {
 	

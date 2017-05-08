@@ -3,7 +3,9 @@ package com.springboot.config.annotation;
 import java.lang.annotation.*;
 
 /**
- * Created by seven sins on 2/9/2017.
+ * Bean验证规则
+ * @author seven sins
+ * @date 2017年5月8日 下午10:55:46
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD,ElementType.PARAMETER})

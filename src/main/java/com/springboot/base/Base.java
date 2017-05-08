@@ -1,7 +1,8 @@
 package com.springboot.base;
 
 /**
- * Created by seven sins on 1/28/2017.
+ * @author seven sins
+ * @date 2017年5月8日 下午11:02:57
  */
 public class Base {
     private Integer index = 1;

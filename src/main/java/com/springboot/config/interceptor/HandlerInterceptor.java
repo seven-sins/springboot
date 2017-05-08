@@ -17,10 +17,11 @@ import com.springboot.domain.Privilege;
 import com.springboot.domain.User;
 import com.springboot.service.PrivilegeService;
 import com.springboot.service.RedisService;
+
 /**
  * 拦截器
  * @author seven sins
- *
+ * @date 2017年5月8日 下午10:58:30
  */
 public class HandlerInterceptor extends HandlerInterceptorAdapter{
 

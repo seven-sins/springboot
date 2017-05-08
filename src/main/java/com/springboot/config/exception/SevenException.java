@@ -1,5 +1,10 @@
 package com.springboot.config.exception;
 
+/**
+ * 自定义异常
+ * @author seven sins
+ * @date 2017年5月8日 下午10:58:06
+ */
 public class SevenException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;

@@ -2,6 +2,10 @@ package com.springboot.utils;
 
 import java.security.MessageDigest;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:02:39
+ */
 public class Encrypt {
 	
 	public final static String MD5(String s) {

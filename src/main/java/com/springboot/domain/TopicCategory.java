@@ -6,10 +6,8 @@ import com.springboot.base.Base;
 import com.springboot.config.annotation.Rule;
 
 /**
- * 主题分类
- * 
  * @author seven sins
- *
+ * @date 2017年5月8日 下午11:00:49
  */
 public class TopicCategory extends Base implements Serializable {
 

@@ -16,6 +16,10 @@ import com.springboot.config.annotation.Valid;
 import com.springboot.domain.TopicCategory;
 import com.springboot.service.TopicCategoryService;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:00:05
+ */
 @RestController
 public class TopicCategoryController extends BaseController {
 

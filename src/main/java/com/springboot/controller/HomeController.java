@@ -14,6 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午10:59:34
+ */
 @Controller
 public class HomeController extends BaseController {
 	@Autowired

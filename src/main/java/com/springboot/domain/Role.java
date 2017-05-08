@@ -5,6 +5,10 @@ import com.springboot.config.annotation.Rule;
 
 import java.io.Serializable;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:00:37
+ */
 public class Role extends Base implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -2,6 +2,10 @@ package com.springboot.domain;
 
 import java.util.List;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:00:43
+ */
 public class RolePrivilege {
 
 	private Integer roleId;

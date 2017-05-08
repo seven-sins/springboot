@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * mybatis扫描配置
+ * myBatis扫描配置
  * @author seven sins
- *
+ * @date 2017年5月8日 下午10:53:49
  */
 @Configuration
 @AutoConfigureAfter(MyBatisConfig.class)

@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 
  * @author seven sins
- *
+ * @date 2017年5月8日 下午10:59:47
  */
 @RestController
 public class PrivilegeController extends BaseController{

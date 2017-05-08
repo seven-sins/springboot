@@ -3,6 +3,10 @@ package com.springboot.base;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:03:12
+ */
 public interface BaseService<T> {
 	/**
 	 * 带条件查询，条件可以为null，既没有条件；返回list对象集合

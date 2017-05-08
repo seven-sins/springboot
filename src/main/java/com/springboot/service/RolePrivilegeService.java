@@ -7,6 +7,10 @@ import com.springboot.base.BaseService;
 import com.springboot.domain.Privilege;
 import com.springboot.domain.RolePrivilege;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:02:10
+ */
 public interface RolePrivilegeService extends BaseService<RolePrivilege> {
 
 	/**

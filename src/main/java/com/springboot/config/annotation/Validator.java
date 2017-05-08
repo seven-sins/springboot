@@ -7,7 +7,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.springboot.config.exception.ValidatorException;
 
 /**
- * Created by seven sins on 2/9/2017.
+ * @author seven sins
+ * @date 2017年5月8日 下午10:57:44
  */
 public class Validator {
     private static Rule rule;

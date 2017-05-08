@@ -6,6 +6,10 @@ import java.util.Map;
 import com.springboot.base.BaseMapper;
 import com.springboot.domain.MenuCategory;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:01:08
+ */
 public interface MenuCategoryMapper extends BaseMapper<MenuCategory> {
 
 	/**

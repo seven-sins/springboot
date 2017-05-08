@@ -15,6 +15,11 @@ import org.springframework.stereotype.Component;
 import com.springboot.config.exception.SevenException;
 import com.springboot.config.exception.ValidatorException;
 
+/**
+ * 自动验证Bean
+ * @author seven sins
+ * @date 2017年5月8日 下午10:55:30
+ */
 @Aspect
 @Component
 @Order(1)

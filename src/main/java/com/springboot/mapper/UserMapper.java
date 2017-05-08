@@ -3,6 +3,10 @@ package com.springboot.mapper;
 import com.springboot.base.BaseMapper;
 import com.springboot.domain.User;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:01:36
+ */
 public interface UserMapper extends BaseMapper<User>{ //
 	/**
 	 * 用户登录

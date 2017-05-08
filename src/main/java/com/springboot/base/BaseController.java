@@ -5,6 +5,10 @@ import java.util.Map;
 
 import com.springboot.config.annotation.Validator;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:03:02
+ */
 public class BaseController {
 	
 	protected Map<String, Object> resultMap(int code, Object object){

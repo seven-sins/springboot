@@ -11,6 +11,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.config.exception.SevenException;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:01:01
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDetail extends User implements UserDetails, Serializable{
 

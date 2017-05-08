@@ -13,6 +13,8 @@ import javax.sql.DataSource;
 
 /**
  * localhost:8888/druid/index.html
+ * @author seven sins
+ * @date 2017年5月8日 下午10:54:50
  */
 @Configuration
 public class DruidConfiguration {

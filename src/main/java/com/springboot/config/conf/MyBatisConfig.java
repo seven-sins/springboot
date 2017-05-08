@@ -24,9 +24,9 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
 import com.github.pagehelper.PageHelper;
 
 /**
- * mybatis基础配置
+ * myBatis基础配置
  * @author seven sins
- *
+ * @date 2017年5月8日 下午10:55:01
  */
 @Configuration
 @AutoConfigureAfter(DruidConfiguration.class)

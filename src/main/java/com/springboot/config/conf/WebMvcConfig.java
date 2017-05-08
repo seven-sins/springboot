@@ -22,9 +22,8 @@ import com.springboot.config.annotation.SessionMethodArgumentResolver;
 import com.springboot.config.exception.ExceptionHandlerAdvice;
 
 /**
- * 
  * @author seven sins
- * 
+ * @date 2017年5月8日 下午10:54:24
  */
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {

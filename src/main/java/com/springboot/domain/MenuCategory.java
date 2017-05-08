@@ -6,6 +6,10 @@ import java.util.List;
 import com.springboot.base.Base;
 import com.springboot.config.annotation.Rule;
 
+/**
+ * @author seven sins
+ * @date 2017年5月8日 下午11:00:25
+ */
 public class MenuCategory extends Base implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
