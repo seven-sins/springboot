@@ -22,7 +22,7 @@ public class DruidConfiguration {
 	@Bean
 	public DataSource druidDataSource() {
         return new DruidDataSource();
-    } 
+    }
 	
 	@Bean
 	public ServletRegistrationBean statViewServle(){
