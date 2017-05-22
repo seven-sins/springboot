@@ -14,6 +14,7 @@ import java.util.Map;
  * @author seven sins
  * @date 2017年5月8日 下午10:59:59
  */
+@RequestMapping("/api")
 @RestController
 public class RolePrivilegeController extends BaseController{
 	
@@ -29,21 +30,21 @@ public class RolePrivilegeController extends BaseController{
 	public Object list(@PathVariable("roleId") int roleId){
 		List<Privilege> dataList = rolePrivilegeService.findByRoleId(roleId);
 		
-		return super.resultMap(0, dataList);
+		return super.resultMap(200, dataList);
 	}
 
 	@GetMapping("/rolePrivilege/{roleId}")
 	public Object get(@PathVariable("roleId") int roleId){
 		List<Integer> ids = rolePrivilegeService.getPrivilegeByRoleId(roleId);
 
-		return super.resultMap(0, ids);
+		return super.resultMap(200, ids);
 	}
 	
 	@PutMapping("/rolePrivilege/{roleId}")
 	public Object create(@RequestBody Map<String, Object> map, @PathVariable("roleId") int roleId){
 		rolePrivilegeService.update(roleId, map);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 }

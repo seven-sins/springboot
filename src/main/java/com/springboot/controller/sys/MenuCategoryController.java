@@ -15,6 +15,7 @@ import java.util.Map;
  * @author seven sins
  * @date 2017年5月8日 下午10:59:40
  */
+@RequestMapping("/api")
 @RestController
 public class MenuCategoryController extends BaseController{
 	
@@ -26,7 +27,7 @@ public class MenuCategoryController extends BaseController{
 		map.put("id", id);
 		menuCategoryService.updateModules(map);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 
 	@GetMapping("/menuCategory")
@@ -34,14 +35,14 @@ public class MenuCategoryController extends BaseController{
 		List<MenuCategory> dataList = menuCategoryService.find(menuCategory);
 		int total = menuCategoryService.count(menuCategory);
 		
-		return super.resultMap(0, dataList, total);
+		return super.resultMap(200, dataList, total);
 	}
 
 	@GetMapping("/menuCategory/{id}")
 	public Object get(@PathVariable("id") int id){
 		MenuCategory menuCategory = menuCategoryService.get(id);
 
-		return super.resultMap(0, menuCategory);
+		return super.resultMap(200, menuCategory);
 	}
 	
 	@PostMapping("/menuCategory")
@@ -50,7 +51,7 @@ public class MenuCategoryController extends BaseController{
 		menuCategory.setType(0); // 0:菜单分类，1:模块，2:接口
 		menuCategoryService.insert(menuCategory);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 	@PutMapping("/menuCategory/{id}")
@@ -58,14 +59,14 @@ public class MenuCategoryController extends BaseController{
 		menuCategory.setId(id);
 		menuCategoryService.update(menuCategory);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 	@DeleteMapping("/menuCategory/{id}")
 	public Object remove(@PathVariable("id") Integer id){
 		menuCategoryService.deleteById(id);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 }

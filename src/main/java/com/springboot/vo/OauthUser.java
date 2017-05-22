@@ -14,6 +14,8 @@ public class OauthUser extends User{
 
 	private static final long serialVersionUID = 1L;
 	
+	private Integer roleId; 
+	
 	public OauthUser(){
 		super("user", "pwd", new ArrayList<GrantedAuthority>());
 	}
@@ -21,4 +23,13 @@ public class OauthUser extends User{
 	public OauthUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
 	}
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
+	
 }

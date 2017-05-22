@@ -39,4 +39,6 @@ public class BaseController {
 	protected void valid(Object object){
 		new Validator(object);
 	}
+	
+	protected final Map<String, Object> SUCCESS = resultMsg(200, "操作成功");
 }

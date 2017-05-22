@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.base.BaseController;
@@ -20,6 +21,7 @@ import com.springboot.service.sys.TopicCategoryService;
  * @author seven sins
  * @date 2017年5月8日 下午11:00:05
  */
+@RequestMapping("/api")
 @RestController
 public class TopicCategoryController extends BaseController {
 
@@ -31,21 +33,21 @@ public class TopicCategoryController extends BaseController {
 		List<TopicCategory> dataList = topicCategoryService.find(topicCategory);
 		int total = topicCategoryService.count(topicCategory);
 		
-		return super.resultMap(0, dataList, total);
+		return super.resultMap(200, dataList, total);
 	}
 
 	@GetMapping("/topicCategory/{id}")
 	public Object get(@PathVariable("id") int id){
 		TopicCategory topicCategory = topicCategoryService.get(id);
 
-		return super.resultMap(0, topicCategory);
+		return super.resultMap(200, topicCategory);
 	}
 	
 	@PostMapping("/topicCategory")
 	public Object create(@Valid @RequestBody TopicCategory topicCategory){
 		topicCategoryService.insert(topicCategory);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 	@PutMapping("/topicCategory/{id}")
@@ -53,13 +55,13 @@ public class TopicCategoryController extends BaseController {
 		topicCategory.setId(id);
 		topicCategoryService.update(topicCategory);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 	@DeleteMapping("/topicCategory/{id}")
 	public Object remove(@PathVariable("id") int id){
 		topicCategoryService.deleteById(id);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 }

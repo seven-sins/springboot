@@ -14,6 +14,7 @@ import java.util.List;
  * @author seven sins
  * @date 2017年5月8日 下午10:59:47
  */
+@RequestMapping("/api")
 @RestController
 public class PrivilegeController extends BaseController{
 	
@@ -21,7 +22,7 @@ public class PrivilegeController extends BaseController{
 	PrivilegeService privilegeService;
 	
 	/**
-	 * 获取所有status=0的数据
+	 * 获取所有status = 0的数据
 	 * @param privilege
 	 * @return
 	 */
@@ -32,7 +33,7 @@ public class PrivilegeController extends BaseController{
 		privilege.setType(null);
 		List<Privilege> dataList = privilegeService.getAll(privilege);
 
-		return super.resultMap(0, dataList);
+		return super.resultMap(200, dataList);
 	}
 
 	/**
@@ -44,11 +45,10 @@ public class PrivilegeController extends BaseController{
 	public Object list(Privilege privilege){
 		List<Privilege> dataList = privilegeService.list(privilege);
 
-		return super.resultMap(0, dataList);
+		return super.resultMap(200, dataList);
 	}
 
 	/**
-	 * 
 	 * @param privilege
 	 * @return
 	 */
@@ -57,21 +57,21 @@ public class PrivilegeController extends BaseController{
 		List<Privilege> dataList = privilegeService.find(privilege);
 		int total = privilegeService.count(privilege);
 		
-		return super.resultMap(0, dataList, total);
+		return super.resultMap(200, dataList, total);
 	}
 
 	@GetMapping("/privilege/{id}")
 	public Object get(@PathVariable("id") int id){
 		Privilege privilege = privilegeService.get(id);
 
-		return super.resultMap(0, privilege);
+		return super.resultMap(200, privilege);
 	}
 	
 	@PostMapping("/privilege")
 	public Object create(@Valid @RequestBody Privilege privilege){
 		privilegeService.insert(privilege);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 	@PutMapping("/privilege/{id}")
@@ -79,14 +79,14 @@ public class PrivilegeController extends BaseController{
 		privilege.setId(id);
 		privilegeService.update(privilege);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 	@DeleteMapping("/privilege/{id}")
 	public Object remove(@PathVariable("id") int id){
 		privilegeService.deleteById(id);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 }

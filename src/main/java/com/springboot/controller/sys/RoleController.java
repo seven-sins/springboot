@@ -14,6 +14,7 @@ import java.util.List;
  * @author seven sins
  * @date 2017年5月8日 下午10:59:53
  */
+@RequestMapping("/api")
 @RestController
 public class RoleController extends BaseController{
 	
@@ -25,21 +26,21 @@ public class RoleController extends BaseController{
 		List<Role> dataList = roleService.find(role);
 		int total = roleService.count(role);
 		
-		return super.resultMap(0, dataList, total);
+		return super.resultMap(200, dataList, total);
 	}
 
 	@GetMapping("/role/{id}")
 	public Object get(@PathVariable("id") int id){
 		Role role = roleService.get(id);
 
-		return super.resultMap(0, role);
+		return super.resultMap(200, role);
 	}
 	
 	@PostMapping("/role")
 	public Object create(@Valid @RequestBody Role role){
 		roleService.insert(role);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 	@PutMapping("/role/{id}")
@@ -47,14 +48,14 @@ public class RoleController extends BaseController{
 		role.setId(id);
 		roleService.update(role);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 	@DeleteMapping("/role/{id}")
 	public Object remove(@PathVariable("id") int id){
 		roleService.deleteById(id);
 		
-		return super.resultMsg(0, "操作成功");
+		return SUCCESS;
 	}
 	
 }
