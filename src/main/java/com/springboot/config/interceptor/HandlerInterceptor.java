@@ -13,16 +13,17 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.springboot.config.exception.SevenException;
-import com.springboot.domain.Privilege;
-import com.springboot.domain.User;
-import com.springboot.service.PrivilegeService;
-import com.springboot.service.RedisService;
+import com.springboot.po.Privilege;
+import com.springboot.po.User;
+import com.springboot.service.assist.RedisService;
+import com.springboot.service.sys.PrivilegeService;
 
 /**
- * 拦截器
+ * 停用此方式， 改用Oauth2
  * @author seven sins
  * @date 2017年5月8日 下午10:58:30
  */
+@Deprecated
 public class HandlerInterceptor extends HandlerInterceptorAdapter{
 
 	/**

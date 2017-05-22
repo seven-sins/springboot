@@ -16,10 +16,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.springboot.config.exception.SevenException;
-import com.springboot.domain.Privilege;
-import com.springboot.domain.UserDetail;
-import com.springboot.service.PrivilegeService;
-import com.springboot.service.RedisService;
+import com.springboot.po.Privilege;
+import com.springboot.po.UserDetail;
+import com.springboot.service.assist.RedisService;
+import com.springboot.service.sys.PrivilegeService;
 
 @Component
 public class AuthenticationTokenFilter extends OncePerRequestFilter{

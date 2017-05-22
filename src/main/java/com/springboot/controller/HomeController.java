@@ -3,9 +3,9 @@ package com.springboot.controller;
 import com.alibaba.fastjson.JSONArray;
 import com.springboot.base.BaseController;
 import com.springboot.config.annotation.Session;
-import com.springboot.domain.Privilege;
-import com.springboot.domain.User;
-import com.springboot.service.RolePrivilegeService;
+import com.springboot.po.Privilege;
+import com.springboot.po.User;
+import com.springboot.service.sys.RolePrivilegeService;
 
 import java.util.List;
 

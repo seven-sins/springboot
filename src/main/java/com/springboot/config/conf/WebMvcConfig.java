@@ -76,15 +76,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/assets/**").addResourceLocations("classpath:/assets/");
 	}
 
-	// 弃用此拦截器，改用security
-	/**
-	 * 配置拦截器
-	 */
-	// @Override
-	// public void addInterceptors(InterceptorRegistry registry){
-	// registry.addInterceptor(new HandlerInterceptor());
-	// }
-
 	/**
 	 * 
 	 */

@@ -15,8 +15,8 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
 import com.springboot.config.exception.SevenException;
-import com.springboot.domain.User;
-import com.springboot.service.RedisService;
+import com.springboot.po.User;
+import com.springboot.service.assist.RedisService;
 
 /**
  * @author seven sins

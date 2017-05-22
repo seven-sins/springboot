@@ -36,11 +36,11 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
 	@Autowired
 	DataSource dataSource;
 
-    @Bean(name = "sqlSessionFactory")
+	@Bean("sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactoryBean() {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        // bean.setTypeAliasesPackage("com.springboot.domain"); Mapper.xml中类型为类的全名， 可不配置此属性
+        bean.setTypeAliasesPackage("com.springboot.po"); // Mapper.xml中类型为类的全名， 可不配置此属性
 
         //分页插件
         PageHelper pageHelper = new PageHelper();
@@ -57,7 +57,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
-            bean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
+            bean.setMapperLocations(resolver.getResources("classpath:mapper/**/*.xml"));
             return bean.getObject();
         } catch (Exception e) {
             e.printStackTrace();
