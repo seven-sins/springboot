@@ -5,7 +5,6 @@ import com.springboot.base.BaseController;
 import com.springboot.config.annotation.Valid;
 import com.springboot.po.User;
 import com.springboot.service.sys.UserService;
-import com.springboot.vo.OauthUser;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,7 @@ public class UserController extends BaseController {
 
 	@GetMapping("/api/user")
 	@ResponseBody
-	public Object list(User user, OauthUser oauthUser) {
+	public Object list(User user) {
 		List<User> dataList = userService.find(user);
 		int total = userService.count(user);
 
