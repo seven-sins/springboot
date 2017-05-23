@@ -1,4 +1,4 @@
-package com.springboot.config.annotation;
+package com.springboot.nonuse;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
@@ -22,6 +22,7 @@ import com.springboot.service.assist.RedisService;
  * @author seven sins
  * @date 2017年5月8日 下午10:57:29
  */
+@Deprecated
 public final class SessionMethodArgumentResolver implements HandlerMethodArgumentResolver {
 
 	@Override

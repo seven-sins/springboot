@@ -1,6 +1,5 @@
 package com.springboot.controller.main;
 
-import com.alibaba.fastjson.JSONArray;
 import com.springboot.base.BaseController;
 import com.springboot.po.Privilege;
 import com.springboot.service.assist.RedisService;
@@ -44,8 +43,7 @@ public class HomeController extends BaseController {
 		}
 		OauthUser oauthUser = (OauthUser) userObj;
 		List<Privilege> dataList = oauthUser.getPrivileges();
-		JSONArray jsonArray = JSONArray.parseArray(JSONArray.toJSONString(dataList));
-		model.addAttribute("privileges", jsonArray);
+		model.addAttribute("privileges", dataList);
 		
 		return "views/main";
 	}

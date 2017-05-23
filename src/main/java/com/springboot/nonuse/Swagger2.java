@@ -1,4 +1,4 @@
-package com.springboot.config.conf;
+package com.springboot.nonuse;
 
 /**
  * http://localhost:8888/swagger-ui.html

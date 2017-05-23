@@ -1,4 +1,4 @@
-package com.springboot.config.annotation;
+package com.springboot.nonuse;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -14,6 +14,7 @@ import java.lang.annotation.Target;
 @Target({ ElementType.PARAMETER, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Deprecated
 public @interface Session {
 	String value();
 }

@@ -1,6 +1,6 @@
 ﻿/*
 SQLyog Ultimate v11.24 (64 bit)
-MySQL - 5.6.30 : Database - springboot
+MySQL - 5.6.30 : Database - forum
 *********************************************************************
 */
 

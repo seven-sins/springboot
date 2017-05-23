@@ -18,7 +18,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
-import com.springboot.config.annotation.SessionMethodArgumentResolver;
 import com.springboot.config.exception.ExceptionHandlerAdvice;
 
 /**
@@ -81,7 +80,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	 */
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-		argumentResolvers.add(new SessionMethodArgumentResolver());
+		argumentResolvers.add(new UserArgumentResolver());
 	}
 
 	/**
