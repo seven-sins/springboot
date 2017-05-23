@@ -1,8 +1,9 @@
 buildscript {
 	ext {
-		springBootVersion = '1.5.1.RELEASE'
+		springBootVersion = '1.4.5.RELEASE' // 使用1.4.6及以上版本, 引入的aspectjweaver版本为1.8.10, 启动会报错
 	}
 	repositories {
+		// mavenCentral()
 		maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 	}
 	dependencies {
@@ -22,6 +23,7 @@ jar {
 sourceCompatibility = 1.8
 
 repositories {
+	// mavenCentral()
 	maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 }
 
@@ -32,6 +34,7 @@ dependencies {
 	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.2.0')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
@@ -42,6 +45,5 @@ dependencies {
 	compile group: 'com.alibaba', name: 'fastjson', version: '1.2.24'
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
 	compile group: 'com.github.pagehelper', name: 'pagehelper', version: '4.2.1'
-	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
-	compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
+	// compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
 }

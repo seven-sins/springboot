@@ -1,7 +1,6 @@
 package com.springboot.config.security.filter;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.FilterChain;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -61,7 +59,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 				}
 				String method = request.getMethod(); // eg: GET
 				method = method.toLowerCase();
-				if(!this.isValid(path, method, oauthUser.getAuthorities())){
+				if(!this.isValid(url, method, oauthUser.getPrivileges())){
 					throw new SevenException(403, "无权限访问");
 				}
 
@@ -78,12 +76,13 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 		filterChain.doFilter(request, response);
 	}
 	
-	private boolean isValid(String url, String method, Collection<GrantedAuthority> privileges){
+	private boolean isValid(String url, String method, List<Privilege> privileges){
 		for(int i=0; i<privileges.size(); i++){
-			String dbUrl = String.valueOf(privileges[i]);
+			Privilege privilege = privileges.get(i);
+			String dbUrl = privilege.getUrl();
 			dbUrl = dbUrl.replaceAll("\\{(\\w*|\\s*)\\}", "\\\\w*");
 			
-			if(url.matches(dbUrl) && method.equals("")){ // privilege.getMethod()
+			if(url.matches(dbUrl) && method.equals(privilege.getMethod())){
 				return true;
 			}
 		}

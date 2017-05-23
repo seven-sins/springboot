@@ -43,13 +43,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)//
-				.and().csrf().disable()//
-				.authorizeRequests()//
-				.antMatchers("/oauth/token", "/login", "/doLogin", "/", "/exit", "/main*", "/index", "/main.html", "/index.html").permitAll()//
-				.antMatchers("/api/**").authenticated();
+	        .and().csrf().disable()//
+	        .authorizeRequests().antMatchers("/api/**").authenticated();
 
-		http.exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint())//
-				.and().addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);//
+	    http.exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint())//
+	        .and().addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);//
 	}
 
 	@Bean

@@ -42,15 +42,12 @@ public class UserDetailServiceImpl implements UserDetailService {
 //			throw new SevenException(401, "用户已禁用");
 //		}
 		Collection<SimpleGrantedAuthority> collection = new HashSet<SimpleGrantedAuthority>();
+		collection.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		List<Privilege> privilegeList = rolePrivilegeService.findByRoleId(user.getRoleId());
-		for (Privilege privilege : privilegeList) {
-			if (privilege.getUrl() != null && !"".equals(privilege.getUrl())) {
-				collection.add(new SimpleGrantedAuthority(privilege.getUrl()));
-			}
-		}
 
 		OauthUser oauthUser = new OauthUser(username, user.getPassWord(), collection);
 		oauthUser.setRoleId(user.getRoleId());
+		oauthUser.setPrivileges(privilegeList);
 
 		return oauthUser;
 	}

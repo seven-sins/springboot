@@ -6,11 +6,6 @@ import com.springboot.config.annotation.Valid;
 import com.springboot.po.User;
 import com.springboot.service.sys.UserService;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -40,7 +35,6 @@ public class UserController extends BaseController {
 	@Autowired
 	TokenStore tokenStore;
 
-	@ApiOperation(value = "用户列表")
 	@GetMapping("/api/user")
 	@ResponseBody
 	public Object list(User user) {
@@ -50,8 +44,6 @@ public class UserController extends BaseController {
 		return super.resultMap(200, dataList, total);
 	}
 
-	@ApiOperation(value = "创建用户", notes = "根据User对象创建用户")
-	@ApiImplicitParam(name = "user", value = "用户实体", required = true, dataType = "User")
 	@PostMapping("/api/user")
 	@ResponseBody
 	public Object create(@Valid @RequestBody User user) {
@@ -60,8 +52,6 @@ public class UserController extends BaseController {
 		return super.resultMsg(200, "操作成功");
 	}
 
-	@ApiOperation(value = "修改用户")
-	@ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Integer")
 	@PutMapping("/api/user/{id}")
 	@ResponseBody
 	public Object update(@RequestBody User user, @PathVariable("id") int id) {
@@ -91,8 +81,6 @@ public class UserController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@ApiResponses(value = { @ApiResponse(code = 0, message = "登录成功", response = User.class),
-			@ApiResponse(code = 401, message = "用户名或密码错误") })
 	@PostMapping("/doLogin")
 	@ResponseBody
 	public Object doLogin(@RequestBody User user, HttpServletRequest request) {
@@ -124,7 +112,9 @@ public class UserController extends BaseController {
 
 			result.put("code", 200);
 			result.put("token", jsonObj.get("access_token"));
-
+			//
+			request.getSession().setAttribute("token", jsonObj.get("access_token"));
+			
 		} catch (HttpServerErrorException e) {
 			result.put("code", 401);
 			result.put("message", "用户名或密码错误");

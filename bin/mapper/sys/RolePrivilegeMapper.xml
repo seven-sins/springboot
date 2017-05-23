@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.mapper.sys.RolePrivilegeMapper">
+    <resultMap id="rolePrivilegeRM" type="com.springboot.po.RolePrivilege">
+        <id property="roleId" column="role_id" />
+        <result property="privilegeId" column="privilege_id" />
+    </resultMap>
+    
+    <!-- 根据当前角色Id获取权限列表， 返回privilege对象列表 -->
+    <select id="findByRoleId" parameterType="int" resultMap="com.springboot.mapper.sys.PrivilegeMapper.restRM">
+        SELECT
+        	b.id,
+			b.NAME,
+			b.url,
+			b.method,
+			b.type,
+			b.parent_id,
+			b.menu_category_id
+		FROM
+			sys_role_privilege a
+		INNER JOIN sys_privilege b ON a.privilege_id = b.id
+		WHERE
+			a.role_id = #{roleId} and b.status = 0
+    </select>
+    
+    <select id="find" parameterType="com.springboot.po.RolePrivilege" resultMap="rolePrivilegeRM">
+        SELECT a.role_id, a.privilege_id
+        FROM sys_role_privilege a
+        WHERE 1=1
+        <if test="roleId != null">
+			and a.role_id = #{roleId}
+		</if>
+		<if test="privilegeId != null">
+			and a.privilege_id = #{privilegeId}
+		</if>
+    </select>
+    
+    <!-- 仅获取权限id, 用于设置权限时数据回显 -->
+    <select id="getPrivilegeByRoleId" parameterType="int" resultType="int">
+        SELECT a.privilege_id
+        FROM sys_role_privilege a
+        WHERE a.role_id = #{roleId}
+    </select>
+    
+    <insert id="insert" parameterType="com.springboot.po.RolePrivilege" >
+		insert into sys_role_privilege
+			(	
+				role_id,
+				privilege_id
+			)
+		values
+			(	
+			 	#{roleId},
+			 	#{privilegeId}
+	 	     )
+	</insert>
+	
+	<delete id="deleteById" parameterType="int">
+		delete from sys_role_privilege
+		where role_id = #{roleId}
+	</delete>
+</mapper> 

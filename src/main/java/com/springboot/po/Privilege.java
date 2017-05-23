@@ -29,6 +29,10 @@ public class Privilege extends Base implements Serializable {
 	private String menuCategoryName; // 所属菜单分类名称
 	private Integer position;
 	private List<Privilege> children;
+	
+	public Privilege() {
+		super();
+	}
 
 	public Integer getId() {
 		return id;
