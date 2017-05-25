@@ -110,14 +110,18 @@ public class UserController extends BaseController {
 
 			JSONObject jsonObj = JSONObject.parseObject(response.getBody().toString());
 
-			result.put("code", 200);
-			result.put("token", jsonObj.get("access_token"));
-			//
-			request.getSession().setAttribute("token", jsonObj.get("access_token"));
-			
+			if (jsonObj.get("code") != null && !"200".equals(jsonObj.getString("code"))) {
+				result.put("code", Integer.valueOf(jsonObj.get("code").toString()));
+				result.put("message", jsonObj.getString("message"));
+			} else {
+				result.put("code", 200);
+				result.put("token", jsonObj.get("access_token"));
+				//
+				request.getSession().setAttribute("token", jsonObj.get("access_token"));
+			}
 		} catch (HttpServerErrorException e) {
-			result.put("code", 401);
-			result.put("message", "用户名或密码错误");
+			result.put("code", 500);
+			result.put("message", "服务端错误");
 		}
 
 		return result;

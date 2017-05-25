@@ -8,7 +8,9 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.RedisConnectionFailureException;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
@@ -26,7 +28,9 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
+import com.springboot.config.exception.SevenException;
 import com.springboot.config.security.enhancer.CustomTokenEnhancer;
+import com.springboot.config.security.exception.AuthException;
 import com.springboot.config.security.provider.CustomAuthencticationProvider;
 
 /**
@@ -90,6 +94,20 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 		endpoints.userApprovalHandler(userApprovalHandler(tokenStore()));//
 		endpoints.authenticationManager(authenticationManager());// 认证管理器
 		endpoints.tokenEnhancer(customerEnhancer()); // 自定义token生成
+		endpoints.exceptionTranslator(e -> {
+			if(e instanceof SevenException){
+				SevenException sevenEx = (SevenException) e;
+				return ResponseEntity
+                        .status(200)
+                        .body(new AuthException(sevenEx.getCode(), sevenEx.getMessage()));
+			}else if(e instanceof RedisConnectionFailureException){
+				return ResponseEntity
+                        .status(200)
+                        .body(new AuthException(401, "redis连接失败"));
+			}else{
+				throw e;
+			}
+		});
 
 		// 配置TokenServices参数
 		DefaultTokenServices tokenServices = (DefaultTokenServices) endpoints
