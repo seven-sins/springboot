@@ -60,7 +60,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 				String method = request.getMethod(); // eg: GET
 				method = method.toLowerCase();
 				if(!this.isValid(url, method, oauthUser.getPrivileges())){
-					throw new SevenException(403, "无权限访问");
+					throw new SevenException(403, "无权限访问"); // TODO: 全局异常不能捕获此处抛出的异常, 需要改用response输出, 待处理
 				}
 
 				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(oauthUser,
