@@ -54,7 +54,7 @@ public class AspectConfig {
         if(e instanceof ValidatorException || e instanceof SevenException){
         	
         }else{ // 未捕获异常
-        	throw new SevenException(-1, "未捕获异常: " + e.getLocalizedMessage());
+        	throw new SevenException(-1, "未捕获异常: " + e);
         }
     }
 }
